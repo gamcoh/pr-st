@@ -41,14 +41,7 @@ console = Console()
     help="Enable multipage mode (streamlit native)",
     show_default=True,
 )
-@click.option(
-    "--hydralit",
-    is_flag=True,
-    default=False,
-    help="Enable hydralit mode (see https://github.com/TangleSpace/hydralit for more info)",
-    show_default=True,
-)
-def main(root: str, use_pr_st_template: bool, multipage: bool, hydralit: bool) -> None:
+def main(root: str, use_pr_st_template: bool, multipage: bool) -> None:
     """PR-ST is a CLI package that helps creates streamlit templates"""
 
     if multipage and hydralit:
@@ -76,10 +69,6 @@ def main(root: str, use_pr_st_template: bool, multipage: bool, hydralit: bool) -
         if use_pr_st_template:
             requirements.append("pr-streamlit-template")
             handle_pr_st_template(root)
-
-        if hydralit:
-            requirements.append("hydralit")
-            handle_hydralit_template(root)
 
         # Write the dependencies to requirements.txt
         with open(f"{root}/streamlit/requirements.txt", "a") as f:
