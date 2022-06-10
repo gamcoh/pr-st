@@ -1,5 +1,8 @@
 # pr-st
 
+## Demo
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/18115514/173080448-aead809f-e275-4d69-8b60-ef31fc6ecd31.gif)
+
 <div align="center">
 
 [![Build status](https://github.com/gamcoh/pr-st/workflows/build/badge.svg?branch=master&event=push)](https://github.com/gamcoh/pr-st/actions?query=workflow%3Abuild)
