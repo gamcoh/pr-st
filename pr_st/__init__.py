@@ -1,7 +1,6 @@
 # type: ignore[attr-defined]
 """PR-ST is a CLI package that helps creates streamlit templates"""
 
-import sys
 from importlib import metadata as importlib_metadata
 
 
