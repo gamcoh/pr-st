@@ -38,7 +38,7 @@ def handle_multipage(root: str, use_pr_st_template: bool = False) -> None:
         f.truncate()
 
 
-def handle_pr_st_template(root: str, return_content: bool = False) -> None:
+def handle_pr_st_template(root: str, return_content: bool = False) -> str:
     """Enable pr-streamlit-template styles (see https://pypi.org/project/pr-streamlit-template/ for more info)"""
 
     pr_st_template_dir = resource_filename("pr_st", "template/pr_st_template/func.py")
@@ -55,9 +55,7 @@ def handle_pr_st_template(root: str, return_content: bool = False) -> None:
         f.write(content.replace("{{ PR_ST_TEMPLATE_CONTENT }}", pr_st_template_content))
         f.truncate()
 
-
-def handle_hydralit_template(root: str) -> None:
-    pass
+    return ""
 
 
 def clean_macros(root: str) -> None:

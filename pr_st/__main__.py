@@ -1,17 +1,16 @@
 # type: ignore[attr-defined]
 import shutil
+from pathlib import Path
 
 import click
 from pkg_resources import resource_filename
+from rich import print
 from rich.console import Console
+from rich.tree import Tree
 
 from pr_st import version
-from pr_st.utils import (
-    clean_macros,
-    handle_hydralit_template,
-    handle_multipage,
-    handle_pr_st_template,
-)
+from pr_st.tree import walk_directory
+from pr_st.utils import clean_macros, handle_multipage, handle_pr_st_template
 
 console = Console()
 
@@ -44,12 +43,6 @@ console = Console()
 def main(root: str, use_pr_st_template: bool, multipage: bool) -> None:
     """PR-ST is a CLI package that helps creates streamlit templates"""
 
-    if multipage and hydralit:
-        console.print(
-            "[red]Error: [reset]You can't use multipage and hydralit at the same time"
-        )
-        return
-
     ascii_logo = resource_filename("pr_st", "assets/images/ascii_logo.txt")
     with open(ascii_logo) as f:
         console.print(f.read(), justify="left", overflow="ellipsis", style="bold blue")
@@ -60,7 +53,9 @@ def main(root: str, use_pr_st_template: bool, multipage: bool) -> None:
             template_dir,
             f"{root}/streamlit",
         )
-        console.log(f"Copied the base template to {root}")
+        console.log(
+            f"Copied the base template to {root}",
+        )
 
         if multipage:
             handle_multipage(root, use_pr_st_template=use_pr_st_template)
@@ -77,6 +72,16 @@ def main(root: str, use_pr_st_template: bool, multipage: bool) -> None:
 
         clean_macros(root)
         console.log("Cleaned the macros")
+
+    console.print("[bold green]Done![reset]\n")
+
+    directory = f"{root}/streamlit/"
+    tree = Tree(
+        f":open_file_folder: [link file://{directory}]{directory}",
+        guide_style="bold bright_blue",
+    )
+    walk_directory(Path(directory), tree)
+    print(tree)
 
 
 if __name__ == "__main__":
