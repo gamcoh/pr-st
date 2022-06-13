@@ -21,8 +21,8 @@ def handle_multipage(root: str, use_pr_st_template: bool = False) -> None:
     # Now we need to create a new file called "page1.py"
     with open(f"{root}/streamlit/pages/Page_2.py", "w") as f:
         f.write(
-            mutlipage_page_content.replace("{{ PAGE_NUMBER }}", "2").replace(
-                "{{ PR_ST_TEMPLATE_CONTENT }}",
+            mutlipage_page_content.replace("{{PAGE_NUMBER}}", "2").replace(
+                "{{PR_ST_TEMPLATE_CONTENT}}",
                 handle_pr_st_template(root, return_content=True)
                 if use_pr_st_template
                 else "",
@@ -34,7 +34,7 @@ def handle_multipage(root: str, use_pr_st_template: bool = False) -> None:
         content = f.read()
 
         f.seek(0)
-        f.write(content.replace("{{ MULTIPAGE_CONTENT }}", multipage_main_content))
+        f.write(content.replace("{{MULTIPAGE_CONTENT}}", multipage_main_content))
         f.truncate()
 
 
@@ -52,18 +52,24 @@ def handle_pr_st_template(root: str, return_content: bool = False) -> str:
         content = f.read()
 
         f.seek(0)
-        f.write(content.replace("{{ PR_ST_TEMPLATE_CONTENT }}", pr_st_template_content))
+        f.write(content.replace("{{PR_ST_TEMPLATE_CONTENT}}", pr_st_template_content))
         f.truncate()
 
     return ""
 
 
-def clean_macros(root: str) -> None:
+def clean(root: str) -> None:
     for dir, _, files in os.walk(f"{root}/streamlit/"):
         for file in files:
             with open(f"{dir}/{file}", "r+") as f:
                 content = f.read()
 
+                # Clean up the macros
+                content = re.sub(r"\{\{.*?\}\}", "", content)
+
+                # Clean up the unnecessary new lines
+                content = re.sub(r"\n{3,}", "\n\n", content)
+
                 f.seek(0)
-                f.write(re.sub(r"\{\{.*?\}\}", "", content))
+                f.write(content)
                 f.truncate()

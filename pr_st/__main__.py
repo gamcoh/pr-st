@@ -10,7 +10,7 @@ from rich.tree import Tree
 
 from pr_st import version
 from pr_st.tree import walk_directory
-from pr_st.utils import clean_macros, handle_multipage, handle_pr_st_template
+from pr_st.utils import clean, handle_multipage, handle_pr_st_template
 
 console = Console()
 
@@ -70,8 +70,8 @@ def main(root: str, use_pr_st_template: bool, multipage: bool) -> None:
             f.write("\n".join(requirements))
         console.log("Added dependencies to requirements.txt")
 
-        clean_macros(root)
-        console.log("Cleaned the macros")
+        console.log("Cleaning up...")
+        clean(root)
 
     console.print("[bold green]Done![reset]\n")
 
