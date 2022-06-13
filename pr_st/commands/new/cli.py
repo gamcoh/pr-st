@@ -9,7 +9,7 @@ from rich.console import Console
 from rich.tree import Tree
 
 from pr_st.tree import walk_directory
-from pr_st.utils import clean, handle_multipage, handle_pr_st_template
+from pr_st.utils import clean, handle_multipage, handle_pr_st_template, handle_vault
 
 console = Console()
 
@@ -36,7 +36,16 @@ console = Console()
     help="Enable multipage mode (streamlit native)",
     show_default=True,
 )
-def new(root: str, use_pr_st_template: bool, multipage: bool) -> None:
+@click.option(
+    "--azure-keyvault",
+    is_flag=True,
+    default=False,
+    help="Use a vault.py file to get secrets from Azure KeyVault",
+    show_default=True,
+)
+def new(
+    root: str, use_pr_st_template: bool, multipage: bool, azure_keyvault: bool
+) -> None:
     """Initialize a new Streamlit project"""
 
     ascii_logo = resource_filename("pr_st", "assets/images/ascii_logo.txt")
@@ -60,6 +69,17 @@ def new(root: str, use_pr_st_template: bool, multipage: bool) -> None:
         if use_pr_st_template:
             requirements.append("pr-streamlit-template")
             handle_pr_st_template(root)
+
+        console.log("Adding the keyvault module...")
+        if azure_keyvault:
+            requirements.append("azure-keyvault-secrets")
+            requirements.extend(
+                [
+                    "azure-keyvault-secrets",
+                    "azure-identity",
+                ]
+            )
+            handle_vault(root)
 
         # Write the dependencies to requirements.txt
         with open(f"{root}/streamlit/requirements.txt", "a") as f:

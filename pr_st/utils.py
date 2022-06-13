@@ -1,5 +1,6 @@
 import os
 import re
+import shutil
 
 from pkg_resources import resource_filename
 
@@ -73,3 +74,12 @@ def clean(root: str) -> None:
                 f.seek(0)
                 f.write(content)
                 f.truncate()
+
+
+def handle_vault(root: str) -> None:
+    """Use a vault.py file to get secrets from Azure KeyVault"""
+
+    vault_file = resource_filename("pr_st", "template/keyvault/vault.py")
+
+    # copy the vault file to the root
+    shutil.copy(vault_file, f"{root}/streamlit/vault.py")
