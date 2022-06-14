@@ -62,6 +62,9 @@ def handle_pr_st_template(root: str, return_content: bool = False) -> str:
 def clean(root: str) -> None:
     for dir, _, files in os.walk(f"{root}/streamlit/"):
         for file in files:
+            if file.endswith(".pyc"):
+                continue
+
             with open(f"{dir}/{file}", "r+", encoding="utf-8") as f:
                 content = f.read()
 
