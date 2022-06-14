@@ -1,5 +1,5 @@
 import streamlit as st
 
-{{PR_ST_TEMPLATE_CONTENT}}
+{{pr_st_cli_TEMPLATE_CONTENT}}
 {{MULTIPAGE_CONTENT}}
 {{HYDRALIT_CONTENT}}

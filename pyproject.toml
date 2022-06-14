@@ -4,14 +4,14 @@ requires = ["poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "pr-st"
+name = "pr-st-cli"
 version = "0.0.1"
-description = "PR-ST is a CLI package that helps creates streamlit templates"
+description = "pr-st-cli is a CLI package that helps creates streamlit templates"
 readme = "README.md"
 authors = ["gamcoh <cohengamliel8@gmail.com>"]
 license = "MIT"
-repository = "https://github.com/gamcoh/pr-st"
-homepage = "https://github.com/gamcoh/pr-st"
+repository = "https://github.com/gamcoh/pr-st-cli"
+homepage = "https://github.com/gamcoh/pr-st-cli"
 
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
 keywords = []  #! Update me
@@ -30,7 +30,7 @@ classifiers = [  #! Update me
 
 [tool.poetry.scripts]
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
-"pr-st" = "pr_st.__main__:main"
+"pr-st-cli" = "pr_st_cli.__main__:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -138,7 +138,7 @@ addopts = [
 source = ["tests"]
 
 [coverage.paths]
-source = "pr-st"
+source = "pr-st-cli"
 
 [coverage.run]
 branch = true

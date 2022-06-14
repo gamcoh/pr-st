@@ -1,7 +1,7 @@
 """Tests for hello function."""
 import pytest
 
-from pr_st.example import hello
+from pr_st_cli.example import hello
 
 
 @pytest.mark.parametrize(

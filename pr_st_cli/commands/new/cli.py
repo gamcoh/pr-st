@@ -8,8 +8,8 @@ from rich import print
 from rich.console import Console
 from rich.tree import Tree
 
-from pr_st.tree import walk_directory
-from pr_st.utils import clean, handle_multipage, handle_pr_st_template, handle_vault
+from pr_st_cli.tree import walk_directory
+from pr_st_cli.utils import clean, handle_multipage, handle_pr_st_template, handle_vault
 
 console = Console()
 
@@ -48,12 +48,12 @@ def new(
 ) -> None:
     """Initialize a new Streamlit project"""
 
-    ascii_logo = resource_filename("pr_st", "assets/images/ascii_logo.txt")
+    ascii_logo = resource_filename("pr_st_cli", "assets/images/ascii_logo.txt")
     with open(ascii_logo) as f:
         console.print(f.read(), justify="left", overflow="ellipsis", style="bold blue")
 
     with console.status("Processing..."):
-        template_dir = resource_filename("pr_st", "template/streamlit")
+        template_dir = resource_filename("pr_st_cli", "template/streamlit")
         shutil.copytree(
             template_dir,
             f"{root}/streamlit",

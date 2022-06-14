@@ -1,8 +1,8 @@
 # This file contains values from Cookiecutter
 
 default_context:
-  project_name: "pr-st"
-  project_description: "PR-ST is a CLI package that helps creates streamlit templates"
+  project_name: "pr-st-cli"
+  project_description: "pr-st-cli is a CLI package that helps creates streamlit templates"
   organization: "gamcoh"
   license: "MIT"
   minimal_python_version: 3.8

@@ -1,4 +1,4 @@
-# Docker for pr-st
+# Docker for pr-st-cli
 
 ## Installation
 
@@ -15,7 +15,7 @@ make docker-build VERSION=latest
 ```
 
 You may provide name and version for the image.
-Default name is `IMAGE := pr_st`.
+Default name is `IMAGE := pr_st_cli`.
 Default version is `VERSION := latest`.
 
 ```bash
@@ -27,7 +27,7 @@ make docker-build IMAGE=some_name VERSION=0.0.1
 ```bash
 docker run -it --rm \
    -v $(pwd):/workspace \
-   pr_st bash
+   pr_st_cli bash
 ```
 
 ## How to clean up
