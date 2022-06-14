@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "pr-st-cli"
-version = "0.0.2"
+version = "0.0.3"
 description = "pr-st-cli is a CLI package that helps create streamlit templates"
 readme = "README.md"
 authors = ["gamcoh <cohengamliel8@gmail.com>"]
