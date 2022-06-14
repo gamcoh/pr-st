@@ -1,7 +1,7 @@
 # pr-st
 
 ## Demo
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/18115514/173080448-aead809f-e275-4d69-8b60-ef31fc6ecd31.gif)
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/18115514/173534414-d1ed5f2a-757b-4d4f-b5b7-605dc7fd7759.gif)
 
 <div align="center">
 
