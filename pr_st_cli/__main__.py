@@ -8,7 +8,7 @@ from pr_st_cli.commands.new.cli import new
 @click.version_option(version=version)
 def main():
     """
-    pr-st-cli is a CLI package that helps creates streamlit templates
+    pr-st-cli is a CLI package that helps create streamlit templates
     """
     pass
 

@@ -62,7 +62,7 @@ def handle_pr_st_template(root: str, return_content: bool = False) -> str:
 def clean(root: str) -> None:
     for dir, _, files in os.walk(f"{root}/streamlit/"):
         for file in files:
-            with open(f"{dir}/{file}", "r+") as f:
+            with open(f"{dir}/{file}", "r+", encoding="utf-8") as f:
                 content = f.read()
 
                 # Clean up the macros
