@@ -20,6 +20,9 @@ pr-st-cli is a CLI package that helps creates streamlit templates
 
 </div>
 
+## Documentation
+Check out the [documentation wiki](https://github.com/gamcoh/pr-st-cli/wiki) for more information about installation and usage.
+
 ## Very first steps
 
 ### Initialize your code
