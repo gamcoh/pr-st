@@ -1,8 +1,8 @@
 import os
-import isort
 import re
 import shutil
 
+import isort
 from pkg_resources import resource_filename
 
 
@@ -12,8 +12,12 @@ def handle_multipage(root: str, use_pr_st_template: bool = False) -> None:
     # Creating a new folder called "pages"
     os.mkdir(f"{root}/streamlit/pages")
 
-    multipage_page_template = resource_filename("pr_st_cli", "template/multipage/page.py")
-    multipage_main_template = resource_filename("pr_st_cli", "template/multipage/main.py")
+    multipage_page_template = resource_filename(
+        "pr_st_cli", "template/multipage/page.py"
+    )
+    multipage_main_template = resource_filename(
+        "pr_st_cli", "template/multipage/main.py"
+    )
     with open(multipage_page_template) as f:
         mutlipage_page_content = f.read()
 
@@ -43,7 +47,9 @@ def handle_multipage(root: str, use_pr_st_template: bool = False) -> None:
 def handle_pr_st_template(root: str, return_content: bool = False) -> str:
     """Enable pr-streamlit-template styles (see https://pypi.org/project/pr-streamlit-template/ for more info)"""
 
-    pr_st_cli_template_dir = resource_filename("pr_st_cli", "template/pr_st_template/func.py")
+    pr_st_cli_template_dir = resource_filename(
+        "pr_st_cli", "template/pr_st_template/func.py"
+    )
     with open(pr_st_cli_template_dir) as f:
         pr_st_cli_template_content = f.read()
 
@@ -54,7 +60,11 @@ def handle_pr_st_template(root: str, return_content: bool = False) -> str:
         content = f.read()
 
         f.seek(0)
-        f.write(content.replace("{{pr_st_cli_TEMPLATE_CONTENT}}", pr_st_cli_template_content))
+        f.write(
+            content.replace(
+                "{{pr_st_cli_TEMPLATE_CONTENT}}", pr_st_cli_template_content
+            )
+        )
         f.truncate()
 
     return ""
@@ -106,6 +116,7 @@ def handle_vault(root: str) -> None:
 
     # copy the vault file to the root
     shutil.copy(vault_file, f"{root}/streamlit/vault.py")
+
 
 def handle_readme(root: str) -> str:
     """Handle the readme.md file

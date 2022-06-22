@@ -6,11 +6,17 @@ import click
 from pkg_resources import resource_filename
 from rich import print
 from rich.console import Console
-from rich.tree import Tree
 from rich.markdown import Markdown
+from rich.tree import Tree
 
 from pr_st_cli.tree import walk_directory
-from pr_st_cli.utils import clean, handle_multipage, handle_pr_st_template, handle_vault, handle_readme
+from pr_st_cli.utils import (
+    clean,
+    handle_multipage,
+    handle_pr_st_template,
+    handle_readme,
+    handle_vault,
+)
 
 console = Console()
 
