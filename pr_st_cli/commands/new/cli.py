@@ -7,9 +7,10 @@ from pkg_resources import resource_filename
 from rich import print
 from rich.console import Console
 from rich.tree import Tree
+from rich.markdown import Markdown
 
 from pr_st_cli.tree import walk_directory
-from pr_st_cli.utils import clean, handle_multipage, handle_pr_st_template, handle_vault
+from pr_st_cli.utils import clean, handle_multipage, handle_pr_st_template, handle_vault, handle_readme
 
 console = Console()
 
@@ -86,6 +87,9 @@ def new(
             f.write("\n".join(requirements))
         console.log("Added dependencies to requirements.txt")
 
+        console.log("Documenting...")
+        readme = handle_readme(root)
+
         console.log("Cleaning up...")
         clean(root)
 
@@ -98,3 +102,7 @@ def new(
     )
     walk_directory(Path(directory), tree)
     print(tree)
+
+    console.print("\n")
+    console.print("[bold]To get started:\n\n")
+    console.print(Markdown(readme), width=60)

@@ -83,7 +83,10 @@ def clean(root: str) -> None:
                 f.truncate()
 
     # Remove the __pycache__ folder
-    os.removedirs(f"{root}/streamlit/__pycache__")
+    try:
+        os.removedirs(f"{root}/streamlit/__pycache__")
+    except FileNotFoundError:
+        pass
 
 
 def handle_vault(root: str) -> None:
@@ -103,3 +106,23 @@ def handle_vault(root: str) -> None:
 
     # copy the vault file to the root
     shutil.copy(vault_file, f"{root}/streamlit/vault.py")
+
+def handle_readme(root: str) -> str:
+    """Handle the readme.md file
+
+    Args:
+        root (str): The root directory of the project
+
+    Returns:
+        str: the readme content
+    """
+    with open(f"{root}/streamlit/README.md", "r+") as f:
+        content = f.read()
+
+        content = content.replace("{{ROOT_DIR_NAME}}", root)
+
+        f.seek(0)
+        f.write(content)
+        f.truncate()
+
+    return content
