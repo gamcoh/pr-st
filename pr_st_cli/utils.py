@@ -94,7 +94,7 @@ def clean(root: str) -> None:
 
     # Remove the __pycache__ folder
     try:
-        os.removedirs(f"{root}/streamlit/__pycache__")
+        shutil.rmtree(f"{root}/streamlit/__pycache__")
     except FileNotFoundError:
         pass
 
