@@ -1,4 +1,5 @@
 import os
+import isort
 import re
 import shutil
 
@@ -74,6 +75,9 @@ def clean(root: str) -> None:
                 # Clean up the unnecessary new lines
                 content = re.sub(r"\n{3,}", "\n\n", content)
 
+                # Sorting the imports
+                content = isort.code(content, float_to_top=True)
+
                 f.seek(0)
                 f.write(content)
                 f.truncate()
@@ -83,6 +87,16 @@ def handle_vault(root: str) -> None:
     """Use a vault.py file to get secrets from Azure KeyVault"""
 
     vault_file = resource_filename("pr_st_cli", "template/keyvault/vault.py")
+    vault_app_content_file = resource_filename("pr_st_cli", "template/keyvault/App.py")
+    with open(vault_app_content_file) as f:
+        vault_app_content = f.read()
+
+    with open(f"{root}/streamlit/App.py", "r+") as f:
+        content = f.read()
+
+        f.seek(0)
+        f.write(content.replace("{{AZURE_KEYVAULT_CONTENT}}", vault_app_content))
+        f.truncate()
 
     # copy the vault file to the root
     shutil.copy(vault_file, f"{root}/streamlit/vault.py")
