@@ -82,6 +82,9 @@ def clean(root: str) -> None:
                 f.write(content)
                 f.truncate()
 
+    # Remove the __pycache__ folder
+    os.removedirs(f"{root}/streamlit/__pycache__")
+
 
 def handle_vault(root: str) -> None:
     """Use a vault.py file to get secrets from Azure KeyVault"""
