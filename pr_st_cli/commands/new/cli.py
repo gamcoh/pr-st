@@ -22,6 +22,7 @@ console = Console()
 
 
 @click.command("new")
+@click.help_option("--help", "-h")
 @click.argument(
     "root",
     nargs=1,
@@ -31,6 +32,7 @@ console = Console()
 )
 @click.option(
     "--use-pr-st-template",
+    "-t",
     is_flag=True,
     default=False,
     help="Use the pr-streamlit-template styles (see https://pypi.org/project/pr-streamlit-template/ for more info)",
@@ -38,6 +40,7 @@ console = Console()
 )
 @click.option(
     "--multipage",
+    "-m",
     is_flag=True,
     default=False,
     help="Enable multipage mode (streamlit native)",
@@ -45,6 +48,7 @@ console = Console()
 )
 @click.option(
     "--azure-keyvault",
+    "-a",
     is_flag=True,
     default=False,
     help="Use a vault.py file to get secrets from Azure KeyVault",
