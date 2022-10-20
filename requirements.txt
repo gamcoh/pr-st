@@ -16,7 +16,7 @@ msal-extensions==1.0.0; python_version >= "3.6"
 msal==1.18.0; python_version >= "3.6"
 msrest==0.7.1; python_version >= "3.6"
 oauthlib==3.2.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
-portalocker==2.4.0
+portalocker==2.6.0
 pycparser==2.21; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
 pygments==2.12.0; python_full_version >= "3.6.2" and python_full_version < "4.0.0" and python_version >= "3.6"
 pyjwt==2.4.0; python_version >= "3.6"
